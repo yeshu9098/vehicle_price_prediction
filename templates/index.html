@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Price Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Vehicle Price Predictor</h2>
+
+        <form method="POST" action="/">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Price (in Lakhs)</label>
+                    <input type="number" step="0.01" class="form-control" name="present_price" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Kms Driven</label>
+                    <input type="number" class="form-control" name="kms_driven" required>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label class="form-label">Fuel Type</label>
+                    <select class="form-select" name="fuel_type">
+                        <option value="2">Petrol</option>
+                        <option value="3">Diesel</option>
+                        <option value="4">CNG</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Seller Type</label>
+                    <select class="form-select" name="seller_type">
+                        <option value="2">Dealer</option>
+                        <option value="3">Individual</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label class="form-label">Transmission</label>
+                    <select class="form-select" name="transmission">
+                        <option value="2">Manual</option>
+                        <option value="3">Automatic</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Owner</label>
+                    <select class="form-select" name="owner">
+                        <option value="0">First Owner</option>
+                        <option value="1">Second Owner</option>
+                        <option value="3">Third Owner</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <label class="form-label">Vehicle Age (Years)</label>
+                <input type="number" class="form-control" name="age" required>
+            </div>
+
+            <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-primary">Predict Price</button>
+            </div>
+        </form>
+
+        {% if predicted_price is not none %}
+        <div class="alert alert-success mt-4 text-center">
+            <h4>Estimated Selling Price: ₹{{ predicted_price }} INR</h4>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
